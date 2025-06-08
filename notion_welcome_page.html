@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Greeting + Daily Quote</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: transparent;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      text-align: center;
+      padding: 0 20px;
+    }
+    #greet {
+      font-size: 2em;
+      color: #333;
+      margin-bottom: 10px;
+    }
+    #quote {
+      font-size: 1.2em;
+      color: #555;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <div id="greet"></div>
+  <div id="quote"></div>
+
+  <script>
+    const hour = new Date().getHours();
+    const greeting = hour < 12 ? "Good Morning!" :
+                     hour < 18 ? "Good Afternoon!" : "Good Evening!";
+    document.getElementById("greet").innerText = greeting;
+
+    const quotes = [
+      "Believe you can and you're halfway there.",
+      "You miss 100% of the shots you don’t take.",
+      "Success is not final, failure is not fatal: It is the courage to continue that counts.",
+      "If you’re going through hell, keep going.",
+      "Don’t watch the clock; do what it does. Keep going.",
+      "I didn’t fail the test. I just found 100 ways to do it wrong.",
+      "Be yourself; everyone else is already taken.",
+      "I am not lazy. I am on energy-saving mode.",
+      "Why don’t scientists trust atoms? Because they make up everything.",
+      "Some people graduate with honors. I am just honored to graduate."
+    ];
+
+    const day = new Date().getDate();
+    const quote = quotes[day % quotes.length];
+    document.getElementById("quote").innerText = quote;
+  </script>
+</body>
+</html>
