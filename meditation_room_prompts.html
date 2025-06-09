@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      font-family: monospace;
+      text-align: center;
+      margin: 20px;
+      font-size: 1.3em;
+    }
+  </style>
+</head>
+<body>
+  <div id="prompt"></div>
+
+  <script>
+    const prompts = [
+      "What made you smile today?",
+      "What’s one small win you had today?",
+      "Who are you grateful for today?",
+      "What felt meaningful today?",
+      "What’s something you’re looking forward to?",
+      "What did you learn about yourself?",
+      "What was today’s highlight?",
+      "What calmed your mind today?",
+      "Who did you connect with?",
+      "What do you need more of?"
+    ];
+    const dayIndex = new Date().getDate() % prompts.length;
+    document.getElementById('prompt').innerHTML =
+      `🕯️ <strong>Daily Unwind Prompt</strong> — “${prompts[dayIndex]}”`;
+  </script>
+</body>
+</html>
