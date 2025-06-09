@@ -2,47 +2,48 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Start Your Day</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Growing Tree</title>
   <style>
-    .buttons {
+    body {
+      background-color: #f5fff0;
       display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: center;
       justify-content: center;
-      font-family: monospace;
-      margin-top: 2em;
-    }
-  
-    .btn {
-      background: darkorange;
-      color: white;
-      font-weight: bold;
-      font-size: 1.4em;
-      border: none;
-      padding: 1em 1.5em;
-      border-radius: 10px;
-      cursor: pointer;
-      width: 220px;
-      height: 280px;
-      transition: background 0.3s ease;
+      height: 100vh;
       font-family: monospace;
     }
-  
-    .btn:hover {
-      background: #e85d00;
+    h1 {
+      margin-bottom: 20px;
+    }
+    svg {
+      transition: all 1s ease-in-out;
     }
   </style>
-  
- 
-  
 </head>
 <body>
+  <h1 id="dayText">Day 40</h1>
+  <div id="treeContainer"></div>
 
-    <div class="buttons">
-        <button class="btn" onclick="window.location.href='spotify:'">🧘 Take a Breather</button>
-        <button class="btn" onclick="window.location.href='https://open.spotify.com/playlist/5wIEqmi3IrNzwiq8e4JY61?si=609d14afefbf4ad1'"> 🎵 Find the Right Tunes</button>
-      </div>
-      
+  <script>
+    // Set your project start date (YYYY, MM - 1, DD)
+    const startDate = new Date(2025, 4, 1); // May 1, 2025
+    const today = new Date();
+    const dayDiff = Math.floor((today - startDate) / (1000 * 60 * 60 * 24)) + 1;
 
+    document.getElementById("dayText").innerText = `🌱 Day ${dayDiff} of TapMate`;
+
+    const treeStages = [
+      `<svg width="100" height="150"><circle cx="50" cy="130" r="5" fill="green"/></svg>`,
+      `<svg width="100" height="150"><rect x="48" y="100" width="4" height="30" fill="#654321"/><circle cx="50" cy="95" r="10" fill="green"/></svg>`,
+      `<svg width="100" height="150"><rect x="48" y="90" width="4" height="40" fill="#654321"/><circle cx="50" cy="85" r="12" fill="green"/><circle cx="40" cy="90" r="8" fill="green"/><circle cx="60" cy="90" r="8" fill="green"/></svg>`,
+      `<svg width="100" height="150"><rect x="48" y="80" width="4" height="50" fill="#654321"/><circle cx="50" cy="75" r="14" fill="green"/><circle cx="40" cy="85" r="10" fill="green"/><circle cx="60" cy="85" r="10" fill="green"/><circle cx="50" cy="100" r="10" fill="green"/></svg>`
+    ];
+
+    // Choose appropriate growth stage (max: last stage)
+    const stageIndex = Math.min(treeStages.length - 1, dayDiff - 1);
+    document.getElementById("treeContainer").innerHTML = treeStages[stageIndex];
+  </script>
 </body>
 </html>
